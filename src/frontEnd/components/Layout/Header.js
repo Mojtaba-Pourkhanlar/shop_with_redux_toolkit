@@ -5,107 +5,71 @@ import logo from "frontEnd/assets/icons/logo.svg";
 import user from "frontEnd/assets/icons/user.svg";
 import location from "frontEnd/assets/icons/location.svg";
 import cart from "frontEnd/assets/icons/cart.svg";
+import menu from "frontEnd/assets/icons/menu.svg";
 import topBaner from "frontEnd/assets/svg/header.webp";
+import {
+  appBarStyle,
+  gridContainerFirst,
+  gridContainerSec,
+  gridItem,
+  imgStyle,
+  linkStyle,
+  menuDrop,
+  pStyle,
+} from "./style";
 
 export const Header = () => {
   return (
     <div>
-      <div>
-        <img src={topBaner} alt="" width="100%" />
-      </div>
-      <AppBar
-        position="fixed"
-        sx={{
-          top: "69px",
-          background: "#20295B",
-          height: "95px",
-        }}
-      >
+      <Box sx={{ height: { xs: "35px", md: "60px" } }}>
+        <img src={topBaner} alt="top-banner" style={imgStyle} />
+      </Box>
+      <AppBar position="fixed" sx={appBarStyle}>
         <Container maxWidth="xl" disableGutters sx={{ height: "100%" }}>
-          <Grid
-            container
-            sx={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              // px: { xs: "10px", sm: "15px", lg: "20px", xl: "0" },
-              height: "60%",
-            }}
-          >
-            <Grid
-              item
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Link to="/" style={{ textDecoration: "none", margin: "0 10px" }}>
+          <Grid container sx={gridContainerFirst}>
+            <Grid item sx={gridItem}>
+              <Link to="/" style={linkStyle}>
                 <img src={cart} alt="cart" width="40px" />
               </Link>
-              <p
-                style={{
-                  height: "32px",
-                  width: "1px",
-                  background:
-                    "linear-gradient(90deg, rgba(224, 225, 226, 0) 0%, rgb(224, 225, 226) 49.52%, rgba(224, 225, 226, 0) 100%)",
-                  borderRadius: "50%",
-                  margin: "0 10px",
-                }}
-              />
-              <Link to="/" style={{ textDecoration: "none", margin: "0 10px" }}>
+              <p style={pStyle} />
+              <Link to="/" style={linkStyle}>
                 <img src={user} alt="cart" width="40px" />
               </Link>
             </Grid>
-            <Grid
-              item
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
+            <Grid item sx={gridItem}>
               <Box mx={5}>
                 <Theme />
               </Box>
-              <Link
-                to="/cart"
-                style={{ textDecoration: "none", margin: "0 10px" }}
-              >
+              <Link to="/cart" style={linkStyle}>
                 <img src={logo} alt="cart" />
               </Link>
             </Grid>
           </Grid>
 
-          <Grid
-            sx={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Grid
-              item
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                m: "0 15px",
-              }}
-            >
-              <Typography>ارسال به تهران</Typography>
+          <Grid sx={gridContainerSec}>
+            <Grid item xs={6} sx={[gridItem, { margin: "0 15px" }]}>
+              <Typography variant="h6">ارسال به تهران</Typography>
               <img src={location} alt="location" width="40px" />
             </Grid>
-            <Grid
-              item
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Typography>دسته بندی کالا ها</Typography>
-              <Typography>سوپرمارکت</Typography>
-              <Typography>پر فروش ترین ها</Typography>
-              <Typography>تخفیف ها و پیشنهاد ها</Typography>
+            <Grid item xs={6} md={9} sx={gridItem}>
+              <Typography variant="h6" sx={{ m: "0 20px" }}>
+                تخفیف ها و پیشنهاد ها
+              </Typography>
+              <Typography variant="h6">پر فروش ترین ها</Typography>
+              <Typography variant="h6" sx={{ m: "0 40px 0 20px" }}>
+                سوپرمارکت
+              </Typography>
+              <Box sx={menuDrop}>
+                <Typography variant="h6">دسته بندی کالا ها</Typography>
+                <img src={menu} alt="menu" />
+              </Box>
+              <span
+                style={{
+                  backgroundColor: "#ef394e",
+                  left: 0,
+                  bottom: 0,
+                }}
+              ></span>
             </Grid>
           </Grid>
         </Container>
