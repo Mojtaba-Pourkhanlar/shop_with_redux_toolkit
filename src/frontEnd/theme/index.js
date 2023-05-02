@@ -231,7 +231,7 @@ export const themeSettings = (mode) => {
           }),
     },
     typography: {
-      fontFamily: "roboto",
+      fontFamily: "vazir, roboto",
       fontSize: 14,
       h1: {
         fontSize: 40,
