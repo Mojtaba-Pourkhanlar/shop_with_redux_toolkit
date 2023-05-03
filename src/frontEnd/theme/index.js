@@ -82,7 +82,7 @@ export const tokens = (mode) => ({
           600: "#9D9D9D",
           700: "#B3B3B3",
           800: "#CACACA",
-          900: "#E0E0E0",
+          900: "#FFFFFF",
         },
         primary: {
           100: "#0D1024",
@@ -185,6 +185,7 @@ export const themeSettings = (mode) => {
             background: {
               default: colors.primary[900],
             },
+            
             // background: colors.primary[900],
             // backgroundImage:
             //   "linear-gradient(at 49% 50%, hsl(230.85, 48%, 30%) 0, transparent 59%), linear-gradient(at 82% 65%, hsl(232.00, 37%, 8%) 0, transparent 55%)",

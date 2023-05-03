@@ -1,24 +1,27 @@
 import { AppBar, Box, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Theme } from "../../helper";
-import logo from "frontEnd/assets/icons/logo.svg";
-import user from "frontEnd/assets/icons/user.svg";
-import location from "frontEnd/assets/icons/location.svg";
-import cart from "frontEnd/assets/icons/cart.svg";
-import menu from "frontEnd/assets/icons/menu.svg";
-import topBaner from "frontEnd/assets/svg/header.webp";
+import topBaner from "frontEnd/assets/images/header.webp";
+import { cart, location, logo, menu, user } from "frontEnd/assets/icons";
 import {
   appBarStyle,
+  dropLayout,
   gridContainerFirst,
   gridContainerSec,
   gridItem,
   imgStyle,
   linkStyle,
+  main,
   menuDrop,
   pStyle,
 } from "./style";
+import { headerItem } from "frontEnd/api/fakeApi";
+import { useState } from "react";
+import { DropDown } from "./dropDoen";
 
 export const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div>
       <Box sx={{ height: { xs: "35px", md: "60px" } }}>
@@ -51,27 +54,33 @@ export const Header = () => {
               <Typography variant="h6">ارسال به تهران</Typography>
               <img src={location} alt="location" width="40px" />
             </Grid>
-            <Grid item xs={6} md={9} sx={gridItem}>
-              <Typography variant="h6" sx={{ m: "0 20px" }}>
-                تخفیف ها و پیشنهاد ها
-              </Typography>
-              <Typography variant="h6">پر فروش ترین ها</Typography>
-              <Typography variant="h6" sx={{ m: "0 40px 0 20px" }}>
-                سوپرمارکت
-              </Typography>
-              <Box sx={menuDrop}>
+            <Grid
+              item
+              xs={6}
+              md={9}
+              sx={[gridItem, { display: { sm: "none", md: "flex" } }]}
+            >
+              {headerItem.map((item) => (
+                <Box
+                  sx={menuDrop}
+                  key={item.id}
+                  onMouseLeave={() => setOpen(false)}
+                >
+                  <Typography variant="h6">{item.name}</Typography>
+                  <img src={item.icon} alt={item.name} />
+                </Box>
+              ))}
+              <Box onMouseOver={() => setOpen(true)} sx={menuDrop}>
                 <Typography variant="h6">دسته بندی کالا ها</Typography>
-                <img src={menu} alt="menu" />
+                <img src={menu} alt={"دسته بندی کالا ها"} />
               </Box>
-              <span
-                style={{
-                  backgroundColor: "#ef394e",
-                  left: 0,
-                  bottom: 0,
-                }}
-              ></span>
             </Grid>
           </Grid>
+          {open && (
+            <Box sx={dropLayout} onMouseLeave={() => setOpen(false)}>
+              <DropDown />
+            </Box>
+          )}
         </Container>
       </AppBar>
     </div>
