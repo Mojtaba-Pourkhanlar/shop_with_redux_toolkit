@@ -6,7 +6,7 @@ export const imgStyle = {
 export const appBarStyle = {
   top: "60px",
   background: "#0D1024",
-  height: "fit-content",
+  height: "99px",
   width: "100%",
 };
 export const gridContainerFirst = {
@@ -17,7 +17,7 @@ export const gridContainerFirst = {
   pt: "10px",
 };
 export const gridContainerSec = {
-  position:"relative",
+  position: "relative",
   width: "100%",
   display: { xs: "none", sm: "flex" },
   alignItems: "center",
@@ -40,10 +40,34 @@ export const pStyle = {
 export const menuDrop = {
   display: "flex",
   alignItems: "center",
-  // pb:"10px",
+  mr: "20px",
+  pb: "10px",
+  height: "40px",
+  border: "none",
+  position: "relative",
   "&:hover": {
-    pb: "10px",
-    borderBottom: "2px solid #448024",
-    transform: "translate3d(1px, 0px, 0px)",
+    border: "none",
   },
+  "&::after": {
+    content: `""`,
+    position: "absolute",
+    width: "0px",
+    height: "2px",
+    right: "0%",
+    bottom: 0,
+    backgroundColor: "#ef394e",
+    transition: "all ease-in-out .4s",
+  },
+  "&:hover::after": {
+    width: "100%",
+    right: 0,
+  },
+};
+
+export const dropLayout = {
+  display: { sm: "none", md: "flex" },
+  alignItems: "center",
+  justifyContent: "end",
+  marginTop: "-12px",
+  borderRadius: "20px",
 };
