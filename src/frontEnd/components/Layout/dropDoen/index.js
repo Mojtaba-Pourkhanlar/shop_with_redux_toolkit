@@ -1,86 +1,96 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
-import { bocItem, gridItem } from "./style";
+import { detailsStyle, divDropDown, itemStyle } from "./style";
 import { book, pc, sport, styler } from "frontEnd/assets/icons";
+import Item from "./Item";
 
 export const DropDown = () => {
-  const [first, setFirst] = useState(true);
-  const [sec, setSec] = useState(false);
-  const [thir, setThir] = useState(false);
-  const [fours, setFours] = useState(false);
-
+  const [hoveredItem, setHoveredItem] = useState("")
   const theme = useTheme();
   const color = theme.palette;
 
-  const divDropDown = {
-    backgroundColor: color.mode === "dark" ? "#131836" : "#CACACA",
-    width: "800px",
-    height: "250px",
-    zindex: "100",
-    boxShadow: "2px 15px 21px 1880px rgba(0,0,0,0.3)",
-    transition: "all 1s linear",
-  };
-
   return (
-    <div style={divDropDown}>
-      <Grid container sx={{ height: "inherit" }}>
-        <Grid item sm={9} >
-          {!sec && !thir && !fours && (
-            <Box>
-              <Typography variant="h6">کالای دیجیتال</Typography>
-            </Box>
-          )}
-          {sec && (
-            <Box>
-              <Typography variant="h6">مد و پوشاک</Typography>
-            </Box>
-          )}
-          {thir && (
-            <Box>
-              <Typography variant="h6">ورزش و سفر</Typography>
-            </Box>
-          )}
-          {fours && (
-            <Box>
-              <Typography variant="h6">کتاب و لوازم تحریر و هنر</Typography>
-            </Box>
-          )}
+    <Box
+      sx={[
+        divDropDown,
+        { backgroundColor: color.mode === "dark" ? "#131836" : "#CACACA" },
+      ]}
+    >
+      <Grid container>
+        <Grid item sm={9}>
+          <div style={detailsStyle}>
+            {hoveredItem === "" && (
+              <Item subTitles="همه محصولات کالای دیجیتال" />
+            )}
+            {hoveredItem === "first" && (
+              <div
+                onMouseOver={(e) => setHoveredItem("first")}
+                onMouseLeave={() => setHoveredItem("")}
+              >
+                <Item subTitles="همه محصولات کالای دیجیتال" />
+              </div>
+            )}
+            {hoveredItem === "sec" && (
+              <div
+                onMouseOver={(e) => setHoveredItem("sec")}
+                onMouseLeave={() => setHoveredItem("")}
+              >
+                <Item subTitles="همه محصولات مد و پوشاک" />
+              </div>
+            )}
+            {hoveredItem === "third" && (
+              <div
+                onMouseOver={(e) => setHoveredItem("third")}
+                onMouseLeave={() => setHoveredItem("")}
+              >
+                <Item subTitles="همه محصولات ورزش و سفر" />
+              </div>
+            )}
+            {hoveredItem === "fourth" && (
+              <div
+                onMouseOver={(e) => setHoveredItem("fourth")}
+                onMouseLeave={() => setHoveredItem("")}
+              >
+                <Item subTitles="همه محصولات کتال و لوازم تحریر" />
+              </div>
+            )}
+          </div>
         </Grid>
-        <Grid item sm={3} sx={gridItem}>
+        <Grid item sm={3}>
           <Box
-            onMouseLeave={() => setFirst(false)}
-            onMouseOver={() => setFirst(true)}
-            sx={bocItem}
+            onMouseOver={(e) => setHoveredItem("first")}
+            onMouseLeave={() => setHoveredItem("")}
+            sx={itemStyle}
           >
-            <Typography variant="h6">کالای دیجیتال</Typography>
+            <Typography variant="subtitle2">کالای دیجیتال</Typography>
             <img src={pc} alt={"کالای دیجیتال"} />
           </Box>
           <Box
-            onMouseLeave={() => setSec(false)}
-            onMouseOver={() => setSec(true)}
-            sx={bocItem}
+            onMouseOver={(e) => setHoveredItem("sec")}
+            onMouseLeave={() => setHoveredItem("")}
+            sx={itemStyle}
           >
-            <Typography variant="h6">مد و پوشاک</Typography>
+            <Typography variant="subtitle2">مد و پوشاک</Typography>
             <img src={styler} alt={"مد و پوشاک"} />
           </Box>
           <Box
-            onMouseLeave={() => setThir(false)}
-            onMouseOver={() => setThir(true)}
-            sx={bocItem}
+            onMouseOver={(e) => setHoveredItem("third")}
+            onMouseLeave={() => setHoveredItem("")}
+            sx={itemStyle}
           >
-            <Typography variant="h6">ورزش و سفر</Typography>
+            <Typography variant="subtitle2">ورزش و سفر</Typography>
             <img src={sport} alt={"ورزش و سفر"} />
           </Box>
           <Box
-            onMouseLeave={() => setFours(false)}
-            onMouseOver={() => setFours(true)}
-            sx={bocItem}
+            onMouseOver={(e) => setHoveredItem("fourth")}
+            onMouseLeave={() => setHoveredItem("")}
+            sx={itemStyle}
           >
-            <Typography variant="h6">کتاب و لوازم تحریر و هنر</Typography>
-            <img src={book} alt={"کتاب و لوازم تحریر و هنر"} />
+            <Typography variant="subtitle2">کتاب و لوازم تحریر</Typography>
+            <img src={book} alt={"ورزش و سفر"} />
           </Box>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
