@@ -11,7 +11,6 @@ import {
   gridItem,
   imgStyle,
   linkStyle,
-  main,
   menuDrop,
   pStyle,
 } from "./style";
@@ -66,10 +65,11 @@ export const Header = () => {
                   key={item.id}
                   onMouseLeave={() => setOpen(false)}
                 >
-                  <Typography variant="h6">{item.name}</Typography>
+                  <Typography variant="subtitle2">{item.name}</Typography>
                   <img src={item.icon} alt={item.name} />
                 </Box>
               ))}
+              <Box sx={[pStyle, { height: "20px", m: "0 10px 10px 0" }]} />
               <Box onMouseOver={() => setOpen(true)} sx={menuDrop}>
                 <Typography variant="h6">دسته بندی کالا ها</Typography>
                 <img src={menu} alt={"دسته بندی کالا ها"} />

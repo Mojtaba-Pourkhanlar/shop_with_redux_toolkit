@@ -30,7 +30,7 @@ export const gridItem = {
 };
 export const linkStyle = { textDecoration: "none", margin: "0 10px" };
 export const pStyle = {
-  height: "32px",
+  height: "25px",
   width: "1px",
   background:
     "linear-gradient(90deg, rgba(224, 225, 226, 0) 0%, rgb(224, 225, 226) 49.52%, rgba(224, 225, 226, 0) 100%)",
@@ -69,5 +69,4 @@ export const dropLayout = {
   alignItems: "center",
   justifyContent: "end",
   marginTop: "-12px",
-  borderRadius: "20px",
 };
