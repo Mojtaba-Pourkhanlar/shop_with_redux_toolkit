@@ -17,21 +17,15 @@ export const detailsStyle = {
   position: "absolute",
   top: 0,
   left: 0,
-  width: "78%",
+  width: "76%",
   padding: "10px",
   display: "inline-block",
   height: "100%",
 };
 
-export const itemStyle = {
-  position: "relative",
-  py: "14px",
-  cursor: "pointer",
-  textAlign: "end",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "end",
-  ml: "15px",
+export const iconStyleHeader = {
+  fontSize: "16px",
+  mr: "10px",
 };
 
 export const digiBoxHeader = {
@@ -51,7 +45,6 @@ export const digiBoxChaild = {
   display: "flex",
   flexDirection: "column",
   alignItems: "end",
-  // justifyContent: "start",
   mt: "5px",
 };
 

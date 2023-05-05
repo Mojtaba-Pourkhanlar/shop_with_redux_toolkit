@@ -1,3 +1,10 @@
+export const topImage = {
+  position: "fixed",
+  top: "0",
+  width: "100%",
+  height: { xs: "35px", md: "60px" },
+  zIndex: "100",
+};
 export const imgStyle = {
   height: "60px",
   width: "100%",
@@ -5,9 +12,11 @@ export const imgStyle = {
 };
 export const appBarStyle = {
   top: "60px",
-  background: "#0D1024",
-  height: "99px",
+  // background: "#0D1024",
   width: "100%",
+  transitionProperty: " all",
+  transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+  transitionDuration: "400ms",
 };
 export const gridContainerFirst = {
   width: "100%",
@@ -19,7 +28,6 @@ export const gridContainerFirst = {
 export const gridContainerSec = {
   position: "relative",
   width: "100%",
-  display: { xs: "none", sm: "flex" },
   alignItems: "center",
   justifyContent: "space-between",
   py: "10px",
