@@ -17,6 +17,10 @@ const CaptionType = ({ title }) => {
       sx={{
         color: colorT.mode === "dark" ? colorT.grey[500] : colorT.grey[600],
         fontSize: "14px",
+        cursor: "pointer",
+        "&:hover": {
+          color: "#ee384e",
+        },
       }}
     >
       {title}

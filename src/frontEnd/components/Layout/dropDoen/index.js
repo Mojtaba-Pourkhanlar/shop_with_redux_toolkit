@@ -1,19 +1,42 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
-import { detailsStyle, divDropDown, itemStyle } from "./style";
-import { book, pc, sport, styler } from "frontEnd/assets/icons";
+import { detailsStyle, divDropDown, iconStyleHeader } from "./style";
+import {
+  Computer,
+  DownhillSkiing,
+  MenuBook,
+  Checkroom,
+} from "@mui/icons-material";
 import Item from "./Item";
 
 export const DropDown = () => {
-  const [hoveredItem, setHoveredItem] = useState("")
+  const [hoveredItem, setHoveredItem] = useState("");
   const theme = useTheme();
   const color = theme.palette;
+
+  const itemStyle = {
+    position: "relative",
+    py: "14px",
+    cursor: "pointer",
+    textAlign: "end",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "end",
+    pl: "15px",
+    color: color.mode === "dark" ? "#ffffff" : "#0D1024",
+    "&:hover": {
+      color: "#ee384e !important",
+      backgroundColor: color.mode === "dark" ? "#192048" : "#E0E0E0",
+      borderRadius: "0 20px 20px 0",
+      overflow: "hidden",
+    },
+  };
 
   return (
     <Box
       sx={[
         divDropDown,
-        { backgroundColor: color.mode === "dark" ? "#131836" : "#CACACA" },
+        { backgroundColor: color.mode === "dark" ? "#131836" : "#ffffff" },
       ]}
     >
       <Grid container>
@@ -63,7 +86,7 @@ export const DropDown = () => {
             sx={itemStyle}
           >
             <Typography variant="subtitle2">کالای دیجیتال</Typography>
-            <img src={pc} alt={"کالای دیجیتال"} />
+            <Computer sx={iconStyleHeader} />
           </Box>
           <Box
             onMouseOver={(e) => setHoveredItem("sec")}
@@ -71,7 +94,7 @@ export const DropDown = () => {
             sx={itemStyle}
           >
             <Typography variant="subtitle2">مد و پوشاک</Typography>
-            <img src={styler} alt={"مد و پوشاک"} />
+            <Checkroom sx={iconStyleHeader} />
           </Box>
           <Box
             onMouseOver={(e) => setHoveredItem("third")}
@@ -79,7 +102,7 @@ export const DropDown = () => {
             sx={itemStyle}
           >
             <Typography variant="subtitle2">ورزش و سفر</Typography>
-            <img src={sport} alt={"ورزش و سفر"} />
+            <DownhillSkiing sx={iconStyleHeader} />
           </Box>
           <Box
             onMouseOver={(e) => setHoveredItem("fourth")}
@@ -87,7 +110,7 @@ export const DropDown = () => {
             sx={itemStyle}
           >
             <Typography variant="subtitle2">کتاب و لوازم تحریر</Typography>
-            <img src={book} alt={"ورزش و سفر"} />
+            <MenuBook sx={iconStyleHeader} />
           </Box>
         </Grid>
       </Grid>
